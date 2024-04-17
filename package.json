@@ -12,6 +12,7 @@
   "dependencies": {
     "@as-integrations/h3": "^1.1.6",
     "@nuxt/image": "^1.5.0",
+    "@vercel/speed-insights": "^1.0.10",
     "nuxt": "^3.11.2",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
