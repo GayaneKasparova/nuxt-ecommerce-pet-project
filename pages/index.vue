@@ -1,5 +1,7 @@
-<script>
-
+<script setup>
+useSeoMeta({
+  title: 'Home'
+})
 </script>
 
 <template>
