@@ -1,4 +1,5 @@
 <script setup>
+import ProductCard from "../../components/ProductCard.vue";
 import { useFiltersStore } from "../../store/filters.ts";
 import { storeToRefs} from "pinia";
 
@@ -13,7 +14,7 @@ useSeoMeta({
 
 const query = gql`
   query getProducts {
-   products(categoryId: 3) {
+   products(categoryId: 3, limit: 3) {
         id
         title
         price
@@ -24,24 +25,26 @@ const query = gql`
     }
   }`
 const { data } = await useAsyncQuery(query)
+console.log(data, 'yy')
 
 </script>
 
 <template>
-  <h1>Products</h1>
-
+ 
   <div>
     {{ filtersList }}
     <input v-model="inputVal">
-    <button @click="addValueToFilterList(inputVal)">+</button>
+    <button @click="addValueToFilterList(inputVal)">+ Add</button>
 
-    <ul v-if="data?.products?.length">
+    <h1 class="my-4 bg-slate-500">Products</h1>
+    <ul class="grid mt-12 lg:grid-cols-3" v-if="data?.products?.length">
       <li v-for="product in data?.products">
-        <NuxtLink :to="`/products/${product?.id}`">
-        <NuxtImg :src="product?.images[0]"  />
-          <h2>{{product.title}}</h2>
-          <p>${{product.price}}</p>
-        </NuxtLink>
+        <ProductCard
+        :navigate-url="`/products/${product?.id}`"
+        :image-url="product?.images[0]"
+        :title="product.title"
+        :price="product.price"
+        />
       </li>
     </ul>
   </div>

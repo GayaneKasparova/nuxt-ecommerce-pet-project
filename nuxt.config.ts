@@ -9,6 +9,7 @@ export default defineNuxtConfig({
       "@nuxt/image",
       '@nuxtjs/tailwindcss',
     ],
+    
 
     apollo: {
         clients: {

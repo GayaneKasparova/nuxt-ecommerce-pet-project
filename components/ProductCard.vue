@@ -1,0 +1,82 @@
+<template>
+  <div class="relative p-4 font-sans">
+    <NuxtLink :to="navigateUrl">
+      <img class="rounded-xl max-h-72 w-96" :src="imageUrl" :alt="title">
+      <div class="mt-4 max-w-72">
+        <span class="text-xl font-black">{{ title }}</span>
+      </div>
+    </NuxtLink>
+    <div class="mt-2">
+      <div class="flex items-center p-1">
+        <span v-for="rating in ratings" :key="rating" class=""> 
+          <RatingSvg/>  
+        </span>
+        <span class="ml-2">{{ ratings }}</span> 
+      </div>
+      <div class="p-1">
+        <span class="text-xl font-black">{{price}} Price</span>
+        <span class="p-2 text-xl font-thin text-gray-400 line-through">{{salePrice}} $200</span>
+        <span class="p-1 mx-1 text-sm font-thin text-white bg-red-600 rounded w-69 h-30">{{priceOff}} 15% Off</span>
+      </div>
+    </div>
+    <div>
+      <FavoriteSvg class="absolute top-6 right-6"/>
+    </div>
+  </div>
+</template>
+
+<script>
+import RatingSvg from '../components/SVG/Rating.vue'
+import FavoriteSvg from '../components/SVG/Favorite.vue'
+export default {
+  name: 'Card',
+  components: {
+    RatingSvg,
+    FavoriteSvg,
+  },
+  props: {
+    navigateUrl: {
+      type: String,
+      required: true,
+    },
+    imageUrl: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    price: {
+      type: Number,
+      required: true
+    },
+    salePrice: {
+      type: String,
+      required: false
+    },
+    soldCount: {
+      type: String,
+      required: false,
+    },
+    priceOff: {
+      type: String,
+      required: false,
+    },
+    ratings: {
+      type: Number,
+      required: false,
+      default: 5,
+    },
+  },
+  methods: {
+    handleClick() {
+      this.$emit('click');
+    }
+  }
+};
+</script>
+
+<style scoped>
+
+</style>
