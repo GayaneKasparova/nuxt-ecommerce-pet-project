@@ -67,11 +67,6 @@ export default <Partial<Config>>{
       fontFamily: {
         openSans: ['OpenSans', 'sans-serif'],
       },
-      //ExtraBold 800
-      //Bold 700
-      //SemiBold 600
-      //Medium 500
-      //Regular 400
       fontSize: {
         h1: ['50px', { lineHeight: '68px', fontWeight: '800' }],
         h2: ['40px', { lineHeight: '54px', fontWeight: '800' }],
