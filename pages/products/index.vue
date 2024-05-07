@@ -14,7 +14,7 @@ useSeoMeta({
 
 const query = gql`
   query getProducts {
-   products(categoryId: 3, limit: 3) {
+   products(categoryId: 3) {
         id
         title
         price
@@ -25,7 +25,6 @@ const query = gql`
     }
   }`
 const { data } = await useAsyncQuery(query)
-console.log(data, 'yy')
 
 </script>
 
@@ -38,7 +37,7 @@ console.log(data, 'yy')
 
     <h1 class="my-4 bg-slate-500">Products</h1>
     <ul class="grid mt-12 lg:grid-cols-3" v-if="data?.products?.length">
-      <li v-for="product in data?.products">
+      <li v-for="product in data?.products" key="product.id">
         <ProductCard
         :navigate-url="`/products/${product?.id}`"
         :image-url="product?.images[0]"
