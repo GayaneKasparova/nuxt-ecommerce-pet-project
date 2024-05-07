@@ -5,7 +5,7 @@
 <template>
   <header class="">
     <nav>
-      <ul class="flex items-center justify-between">
+      <ul class="flex items-center justify-between ">
         <li>
           <NuxtLink to="/">Home</NuxtLink>
         </li>
