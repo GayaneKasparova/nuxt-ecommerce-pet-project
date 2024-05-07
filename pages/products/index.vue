@@ -1,5 +1,4 @@
 <script setup>
-import ProductCard from "../../components/ProductCard.vue";
 import { useFiltersStore } from "../../store/filters.ts";
 import { storeToRefs} from "pinia";
 
@@ -29,21 +28,20 @@ const { data } = await useAsyncQuery(query)
 </script>
 
 <template>
- 
+  <h1>Products</h1>
+
   <div>
     {{ filtersList }}
     <input v-model="inputVal">
-    <button @click="addValueToFilterList(inputVal)">+ Add</button>
+    <button @click="addValueToFilterList(inputVal)">+</button>
 
-    <h1 class="my-4 bg-slate-500">Products</h1>
-    <ul class="grid mt-12 lg:grid-cols-3" v-if="data?.products?.length">
-      <li v-for="product in data?.products" key="product.id">
-        <ProductCard
-        :navigate-url="`/products/${product?.id}`"
-        :image-url="product?.images[0]"
-        :title="product.title"
-        :price="product.price"
-        />
+    <ul v-if="data?.products?.length">
+      <li v-for="product in data?.products">
+        <NuxtLink :to="`/products/${product?.id}`">
+        <NuxtImg :src="product?.images[0]"  />
+          <h2>{{product.title}}</h2>
+          <p>${{product.price}}</p>
+        </NuxtLink>
       </li>
     </ul>
   </div>
