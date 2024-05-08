@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 export default <Partial<Config>>{
   theme: {
@@ -88,6 +88,6 @@ export default <Partial<Config>>{
         p3Bold: ['16px', { lineHeight: '26px', fontWeight: '700' }],
         p3Extra: ['16px', { lineHeight: '26px', fontWeight: '800' }],
       },
-    }
-  }
-}
+    },
+  },
+};

@@ -73,6 +73,7 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
 # nuxt-ecommerce-pet-project
 
 ## Project is using prettier and Husky
@@ -90,14 +91,16 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 > JavaScript | Prettier.
 
 # To format your code, run the format script
+
 ```
 npm run format:check // for checking
 npm run format:write // for changing files
 ```
 
 ## Why Use Husky?
+
 > Husky is a tool that allows you to set up Git hooks easily.
-> we can ensure that Prettier runs before each commit, enforcing consistent formatting and reducing the chance of committing unformatted code. 
+> we can ensure that Prettier runs before each commit, enforcing consistent formatting and reducing the chance of committing unformatted code.
 > This promotes a cleaner codebase and prevents code quality issues from reaching the repository.
 
 in this project Husky is running prettier formatting before every commit.

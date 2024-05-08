@@ -1,7 +1,7 @@
 <script setup>
 useSeoMeta({
-  title: 'Home'
-})
+  title: 'Home',
+});
 </script>
 
 <template>
