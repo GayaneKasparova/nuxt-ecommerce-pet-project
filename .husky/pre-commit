@@ -1,4 +1,5 @@
+#!/bin/sh
 
 # Format the code with Prettier
-npx prettier --write .
+npm run format:write
 

@@ -8,8 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "format:write": "npx prettier --write '**/*.{js,jsx,ts,tsx,vue}'",
-    "format:check": "npx prettier --write '**/*.{js,jsx,ts,tsx,vue}'",
+    "format:write": "prettier --write .",
+    "format:check": "prettier --write .",
     "prepare": "husky"
   },
   "dependencies": {
