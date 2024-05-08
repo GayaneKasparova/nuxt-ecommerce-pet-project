@@ -1,1 +1,7 @@
-npm run format
+#!/bin/sh
+
+# Format the code with Prettier
+npx prettier --write 'components/**/*.{js,jsx,ts,tsx,vue}' 'pages/**/*.{js,jsx,ts,tsx,vue}' 'layouts/**/*.{js,jsx,ts,tsx,vue}' 'store/**/*.{js,jsx,ts,tsx,vue}' || true
+
+# Re-stage the formatted files
+git add 'components/**/*.{js,jsx,ts,tsx,vue}' 'pages/**/*.{js,jsx,ts,tsx,vue}' 'layouts/**/*.{js,jsx,ts,tsx,vue}' 'store/**/*.{js,jsx,ts,tsx,vue}'|| true

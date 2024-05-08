@@ -77,21 +77,27 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ## Project is using prettier and Husky
 
-## Why Use Prettier?
-Prettier is a popular code formatter that ensures consistent code style across the project. In a Nuxt.js project, where you often work with JavaScript, Vue components, HTML, and CSS, Prettier helps:
-- Maintain a consistent code style, reducing the need for manual code formatting.
-- Improve readability, making it easier for developers to understand the codebase.
-- Minimize merge conflicts by adhering to a uniform formatting standard.
+## Running Prettier for Formatting
 
-### Sorting Tailwind CSS Classes
-When using Tailwind CSS, you often have long class lists that can become messy. Prettier, with the `prettier-plugin-tailwindcss`, automatically sorts Tailwind CSS classes in a consistent order, enhancing readability and maintainability.
+> For tailwind class sorting prettier-plugin-tailwindcss is installed. Check
+>
+> out [how classes are sorted](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted).
+>
+> Use "prettier-vscode" for VSCode or "Prettier" plugin for IntelliJ IDEA to run prettier on file save / on "Format
+> code" action
+>
+> To run Prettier on save, tick the "Run on save for files" option in Preferences/Settings | Languages & Frameworks |
+> JavaScript | Prettier.
 
 # To format your code, run the format script
 ```
-npm run format
+npm run format:check // for checking
+npm run format:write // for changing files
 ```
 
 ## Why Use Husky?
-Husky is a tool that allows you to set up Git hooks easily. By integrating Husky, we can ensure that Prettier runs before each commit, enforcing consistent formatting and reducing the chance of committing unformatted code. This promotes a cleaner codebase and prevents code quality issues from reaching the repository.
+> Husky is a tool that allows you to set up Git hooks easily.
+> we can ensure that Prettier runs before each commit, enforcing consistent formatting and reducing the chance of committing unformatted code. 
+> This promotes a cleaner codebase and prevents code quality issues from reaching the repository.
 
 in this project Husky is running prettier formatting before every commit.

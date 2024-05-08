@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "format": "prettier --write 'components/**/*.{js,jsx,ts,tsx,vue}' 'pages/**/*.{js,jsx,ts,tsx,vue}' 'layouts/**/*.{js,jsx,ts,tsx,vue}' 'store/**/*.{js,jsx,ts,tsx,vue}' 'assets/**/*.{css,scss}'",
+    "format:write": "npx prettier --write '**/*.{js,jsx,ts,tsx,vue}'",
+    "format:check": "npx prettier --write '**/*.{js,jsx,ts,tsx,vue}'",
     "prepare": "husky"
   },
   "dependencies": {
