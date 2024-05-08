@@ -1,3 +1,5 @@
+name: Deploy on Vercel Workflow
+
 on:
   push:
     branches:
@@ -6,7 +8,7 @@ on:
     branches:
       - '*'
 
-  deploy:
+  jobs:deploy:
     runs-on: ubuntu-latest
 
     steps:
