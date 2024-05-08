@@ -1,5 +1,3 @@
-name: Deploy on Vercel Workflow
-
 on:
   push:
     branches:
