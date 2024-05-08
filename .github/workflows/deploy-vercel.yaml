@@ -8,24 +8,26 @@ on:
     branches:
       - '*'
 
-  jobs:deploy:
-    runs-on: ubuntu-latest
+  jobs:
+    build:
+      runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20.4'
+        - name: Set up Node.js
+          uses: actions/setup-node@v2
+          with:
+            node-version: '20.4'
 
-      - name: Install Vercel CLI
-        run: npm install -g vercel
+        - name: Install dependencies
+          run: npm install
 
-      - name: Deploy to Vercel
-        run: vercel --confirm --token ${{ secrets.VERCEL_TOKEN }} --prod
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        - name: Run tests
+          run: npm run test
+
+        - name: Deploy to Vercel
+          run: npx vercel --token ${{ secrets.VERCEL_TOKEN }} --prod
+          env:
+            VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
