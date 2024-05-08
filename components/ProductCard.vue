@@ -13,7 +13,7 @@
     <div class="mt-2">
       <div class="flex items-center p-1">
         <span v-for="rating in ratings" :key="rating">
-          <RatingSvg/>  
+          <RatingSvg/>
         </span>
         <span class="ml-2">{{ ratings }}.0</span>
         <span class="px-1 font-thin text-gray-400"> ({{ soldCount }} Sell)</span>
@@ -31,9 +31,10 @@
 </template>
 
 <script>
-import RatingSvg from '../components/SVG/Rating.vue'
-import FavoriteSvg from '../components/SVG/Favorite.vue'
-import defaultImage from '../public/card-default-image.jpeg'
+
+import RatingSvg from '../components/SVG/Rating.vue';
+import FavoriteSvg from '../components/SVG/Favorite.vue';
+import defaultImage from '../public/card-default-image.jpeg';
 
 export default {
   name: 'Card',
@@ -60,36 +61,38 @@ export default {
     },
     salePrice: {
       type: String,
-      required: false,
       default: '$200',
     },
     soldCount: {
       type: Number,
-      required: false,
       default: 25
     },
     priceOff: {
       type: String,
-      required: false,
       default: '15% Off'
     },
     ratings: {
       type: Number,
-      required: false,
       default: 5,
     },
   },
-  methods: {
-    handleFavoriteClick() {
-      this.$emit('click');
-    },
-    handleImageError(event) {
+  setup(props, { emit }) {
+    const handleFavoriteClick = () => {
+      emit('click');
+    };
+
+    const handleImageError = (event) => {
       event.target.src = defaultImage;
-    }
-  }
+    };
+
+    return {
+      handleFavoriteClick,
+      handleImageError,
+    };
+  },
 };
 </script>
 
 <style scoped>
-
+/* Add scoped styles here if needed */
 </style>

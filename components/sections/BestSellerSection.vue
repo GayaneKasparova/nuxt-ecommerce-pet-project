@@ -1,26 +1,5 @@
-<script>
-import ProductCard from '@/components/ProductCard';
-
-export default {
-  props: {
-    bestSellerProducts: {
-      type: Array,
-      required: true
-    }
-  },
-  components: {
-    ProductCard
-  },
-  methods: {
-    seeBestSeller() {
-      alert('see best sellers')
-    }
-  }
-}
-</script>
-
 <template>
-  <section class="my-12" v-if="bestSellerProducts && bestSellerProducts.length">
+  <section class="my-12" v-if="hasBestSellerProducts">
     <div class="flex items-center justify-between">
       <h2 class="mr-4 text-4xl">Best Seller</h2>
       <p class="text-xl cursor-pointer" @click="seeBestSeller">See All</p>
@@ -39,3 +18,38 @@ export default {
     </ul>
   </section>
 </template>
+
+<script>
+import { computed } from 'vue';
+import ProductCard from '@/components/ProductCard';
+
+export default {
+  components: {
+    ProductCard
+  },
+  props: {
+    bestSellerProducts: {
+      type: Array,
+      required: true
+    }
+  },
+  setup(props) {
+    const hasBestSellerProducts = computed(() => {
+      return props.bestSellerProducts && props.bestSellerProducts.length > 0;
+    });
+
+    const seeBestSeller = () => {
+      alert('See best sellers');
+    };
+
+    return {
+      hasBestSellerProducts,
+      seeBestSeller
+    };
+  }
+};
+</script>
+
+<style scoped>
+
+</style>
