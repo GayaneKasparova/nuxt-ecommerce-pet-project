@@ -1,11 +1,9 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <header class="">
     <nav>
-      <ul class="flex items-center justify-between ">
+      <ul class="flex items-center justify-between">
         <li>
           <NuxtLink to="/">Home</NuxtLink>
         </li>
@@ -20,6 +18,4 @@
   </header>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

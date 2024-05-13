@@ -7,7 +7,10 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "format:write": "prettier --write .",
+    "format:check": "prettier --write .",
+    "prepare": "husky"
   },
   "dependencies": {
     "@as-integrations/h3": "^1.1.6",
@@ -23,6 +26,9 @@
     "@nuxtjs/apollo": "^5.0.0-alpha.14",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@pinia/nuxt": "^0.5.1",
+    "husky": "^9.0.11",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.14",
     "sass": "^1.75.0"
   }
 }

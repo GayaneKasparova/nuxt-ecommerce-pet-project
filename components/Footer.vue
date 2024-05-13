@@ -1,11 +1,7 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <footer>Footer</footer>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

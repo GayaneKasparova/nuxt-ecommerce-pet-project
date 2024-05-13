@@ -2,8 +2,8 @@
 import Banner from "~/components/Banner.vue";
 
 useSeoMeta({
-  title: 'Home'
-})
+  title: 'Home',
+});
 </script>
 
 <template>
