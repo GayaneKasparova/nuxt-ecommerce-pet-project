@@ -84,8 +84,8 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 >
 > out [how classes are sorted](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted).
 >
-> Highly recommended to format code on save. 
-> 
+> Highly recommended to format code on save.
+>
 > Use "prettier-vscode" for VSCode or "Prettier" plugin for IntelliJ IDEA to run prettier on file save / on "Format
 > code" action
 >
@@ -108,5 +108,5 @@ This promotes a cleaner codebase and prevents code quality issues from reaching 
 In this project, we use Husky to run Prettier before every Git commit. This ensures that our code is consistently formatted, reducing style discrepancies.
 
 If Prettier makes any changes to the code, you'll see them in your Git status as modified files.
-You can then review these changes and decide whether to include them in a new commit or amend them to your last commit. 
+You can then review these changes and decide whether to include them in a new commit or amend them to your last commit.
 This workflow helps maintain a clean and consistent codebase, while allowing you to keep control over what gets committed.

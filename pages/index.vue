@@ -1,5 +1,5 @@
 <script setup>
-import Banner from "~/components/Banner.vue";
+import Banner from '~/components/Banner.vue';
 
 useSeoMeta({
   title: 'Home',
