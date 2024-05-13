@@ -5,7 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/nuxt"
 <template>
   <div class="h-screen flex flex-col justify-between">
     <Header/>
-    <main class="h-full">
+    <main class="min-h-[100%] max-w-[1440px] m-auto">
       <slot/>
     </main>
     <Footer/>
