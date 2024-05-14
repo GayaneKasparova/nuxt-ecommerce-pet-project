@@ -21,8 +21,5 @@ export default defineNuxtConfig({
         httpEndpoint: 'https://api.escuelajs.co/graphql',
       },
     },
-  },
-  image: {
-    dir: 'assets/images',
-  },
+  }
 });
