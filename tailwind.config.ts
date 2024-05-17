@@ -150,6 +150,9 @@ export default <Partial<Config>>{
           { lineHeight: '1.71', fontWeight: 800 },
         ], // Scales from 12px to 14px
       },
+      spacing: {
+        50: '12.5rem',
+      }
     },
   },
 };

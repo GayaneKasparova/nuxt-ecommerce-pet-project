@@ -22,7 +22,7 @@ const props = defineProps({
 const tag = computed(() => (props.to ? NuxtLink : props.href ? 'a' : 'button'));
 
 const baseBtn =
-  'inline-flex min-w-[176px] lg:min-w-[200px] justify-center py-[14px] rounded-[8px] border border-solid border-grey-100 ';
+  'inline-flex min-w-44 lg:min-w-50 justify-center py-3.5 rounded-2 border border-solid border-grey-100 ';
 
 const btn = {
   primary: `${baseBtn} bg-grey-100 text-white`,
