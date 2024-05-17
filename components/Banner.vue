@@ -4,10 +4,11 @@ const viewport = useViewport();
 
 <template>
   <div class="flex flex-col lg:relative lg:flex-row lg:justify-end">
-    <div
-      class="left-0 z-20 lg:absolute lg:h-[calc(100%-4rem)] lg:w-1/2"
-    >
-      <NuxtImg src="/images/banner-image.jpg" class="relative z-20 size-full max-h-48 sm:max-h-72 lg:max-h-full object-cover"/>
+    <div class="left-0 z-20 lg:absolute lg:h-[calc(100%-4rem)] lg:w-1/2">
+      <NuxtImg
+        src="/images/banner-image.jpg"
+        class="relative z-20 size-full max-h-48 object-cover sm:max-h-72 lg:max-h-full"
+      />
       <NuxtImg
         v-if="viewport.isGreaterThan('tablet')"
         src="/images/bubbles.svg"

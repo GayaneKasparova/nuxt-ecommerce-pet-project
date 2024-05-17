@@ -152,7 +152,7 @@ export default <Partial<Config>>{
       },
       spacing: {
         50: '12.5rem',
-      }
+      },
     },
   },
 };
