@@ -3,9 +3,9 @@ import { SpeedInsights } from '@vercel/speed-insights/nuxt';
 </script>
 
 <template>
-  <div class="flex h-screen flex-col justify-between px-10 py-5">
+  <div class="flex h-screen flex-col justify-between">
     <Header />
-    <main class="h-full py-10">
+    <main class="m-auto min-h-full max-w-2xl">
       <slot />
     </main>
     <Footer />

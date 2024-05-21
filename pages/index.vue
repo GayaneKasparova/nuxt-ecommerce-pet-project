@@ -1,9 +1,11 @@
 <script setup>
+import Banner from '~/components/Banner.vue';
+
 useSeoMeta({
   title: 'Home',
 });
 </script>
 
 <template>
-  <h1>Home page</h1>
+  <Banner />
 </template>
