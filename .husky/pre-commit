@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Format the code with Prettier
+npm run format:check
+
