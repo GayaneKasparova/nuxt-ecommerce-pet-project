@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 export default <Partial<Config>>{
   theme: {
@@ -68,26 +68,91 @@ export default <Partial<Config>>{
         openSans: ['OpenSans', 'sans-serif'],
       },
       fontSize: {
-        h1: ['50px', { lineHeight: '68px', fontWeight: '800' }],
-        h2: ['40px', { lineHeight: '54px', fontWeight: '800' }],
-        h3: ['24px', { lineHeight: '33px', fontWeight: '700' }],
-        subReg: ['22px', { lineHeight: '33px', fontWeight: '400' }],
-        subSemi: ['22px', { lineHeight: '33px', fontWeight: '600' }],
-        subBold: ['22px', { lineHeight: '33px', fontWeight: '700' }],
-        subExtra: ['22px', { lineHeight: '33px', fontWeight: '700' }],
-        p1Reg: ['20px', { lineHeight: '32px', fontWeight: '400' }],
-        p1Semi: ['20px', { lineHeight: '32px', fontWeight: '600' }],
-        p1Bold: ['20px', { lineHeight: '32px', fontWeight: '700' }],
-        p1Extra: ['20px', { lineHeight: '32px', fontWeight: '800' }],
-        p2Reg: ['18px', { lineHeight: '28px', fontWeight: '400' }],
-        p2Semi: ['18px', { lineHeight: '28px', fontWeight: '600' }],
-        p2Bold: ['18px', { lineHeight: '28px', fontWeight: '700' }],
-        p2Extra: ['18px', { lineHeight: '28px', fontWeight: '800' }],
-        p3Reg: ['16px', { lineHeight: '26px', fontWeight: '400' }],
-        p3Semi: ['16px', { lineHeight: '26px', fontWeight: '600' }],
-        p3Bold: ['16px', { lineHeight: '26px', fontWeight: '700' }],
-        p3Extra: ['16px', { lineHeight: '26px', fontWeight: '800' }],
+        // Using clamp() to dynamically adjust sizes from mobile to desktop
+        h1: [
+          'clamp(1.375rem, 2.5vw + 1rem, 3.125rem)',
+          { lineHeight: '1.1', fontWeight: 800 },
+        ], // Scales from 22px to 50px
+        h2: [
+          'clamp(1.25rem, 2vw + 1rem, 2.5rem)',
+          { lineHeight: '1.1', fontWeight: 800 },
+        ], // Scales from 20px to 40px
+        h3: [
+          'clamp(1.125rem, 1.5vw + 0.5rem, 1.5rem)',
+          { lineHeight: '1.1', fontWeight: 700 },
+        ], // Scales from 18px to 24px
+
+        'subtitle-reg': [
+          'clamp(1.125rem, 1.5vw + 0.5rem, 1.5rem)',
+          { lineHeight: '1.1', fontWeight: 400 },
+        ], // Scales from 18px to 24px
+        'subtitle-semibold': [
+          'clamp(1.125rem, 1.5vw + 0.5rem, 1.5rem)',
+          { lineHeight: '1.1', fontWeight: 500 },
+        ], // Scales from 18px to 24px
+        'subtitle-bold': [
+          'clamp(1.125rem, 1.5vw + 0.5rem, 1.5rem)',
+          { lineHeight: '1.1', fontWeight: 700 },
+        ], // Scales from 18px to 24px
+        'subtitle-extra-bold': [
+          'clamp(1.125rem, 1.5vw + 0.5rem, 1.5rem)',
+          { lineHeight: '1.1', fontWeight: 800 },
+        ], // Scales from 18px to 24px
+
+        'p1-reg': [
+          'clamp(1rem, 1vw + 0.5rem, 1.25rem)',
+          { lineHeight: '1.6', fontWeight: 400 },
+        ], // Scales from 16px to 20px
+        'p1-semibold': [
+          'clamp(1rem, 1vw + 0.5rem, 1.25rem)',
+          { lineHeight: '1.6', fontWeight: 500 },
+        ], // Scales from 16px to 20px
+        'p1-bold': [
+          'clamp(1rem, 1vw + 0.5rem, 1.25rem)',
+          { lineHeight: '1.6', fontWeight: 700 },
+        ], // Scales from 16px to 20px
+        'p1-extra-bold': [
+          'clamp(1rem, 1vw + 0.5rem, 1.25rem)',
+          { lineHeight: '1.6', fontWeight: 800 },
+        ], // Scales from 16px to 20px
+
+        'p2-reg': [
+          'clamp(0.875rem, 1vw + 0.25rem, 1rem)',
+          { lineHeight: '1.63', fontWeight: 400 },
+        ], // Scales from 14px to 16px
+        'p2-semibold': [
+          'clamp(0.875rem, 1vw + 0.25rem, 1rem)',
+          { lineHeight: '1.63', fontWeight: 500 },
+        ], // Scales from 14px to 16px
+        'p2-bold': [
+          'clamp(0.875rem, 1vw + 0.25rem, 1rem)',
+          { lineHeight: '1.63', fontWeight: 700 },
+        ], // Scales from 14px to 16px
+        'p2-extra-bold': [
+          'clamp(0.875rem, 1vw + 0.25rem, 1rem)',
+          { lineHeight: '1.63', fontWeight: 800 },
+        ], // Scales from 14px to 16px
+
+        'p3-reg': [
+          'clamp(0.75rem, 0.5vw + 0.5rem, 0.875rem)',
+          { lineHeight: '1.71', fontWeight: 400 },
+        ], // Scales from 12px to 14px
+        'p3-semibold': [
+          'clamp(0.75rem, 0.5vw + 0.5rem, 0.875rem)',
+          { lineHeight: '1.71', fontWeight: 500 },
+        ], // Scales from 12px to 14px
+        'p3-bold': [
+          'clamp(0.75rem, 0.5vw + 0.5rem, 0.875rem)',
+          { lineHeight: '1.71', fontWeight: 700 },
+        ], // Scales from 12px to 14px
+        'p3-extra-bold': [
+          'clamp(0.75rem, 0.5vw + 0.5rem, 0.875rem)',
+          { lineHeight: '1.71', fontWeight: 800 },
+        ], // Scales from 12px to 14px
       },
-    }
-  }
-}
+      spacing: {
+        50: '12.5rem',
+      },
+    },
+  },
+};

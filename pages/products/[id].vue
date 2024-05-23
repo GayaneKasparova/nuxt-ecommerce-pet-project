@@ -1,10 +1,10 @@
 <script setup>
-const route = useRoute()
-const productId = route.params.id
+const route = useRoute();
+const productId = route.params.id;
 
 useSeoMeta({
-    title: `Product-${productId}`
-  })
+  title: `Product-${productId}`,
+});
 </script>
 
 <template>

@@ -1,10 +1,11 @@
 <script setup>
+import Banner from '~/components/Banner.vue';
 import ProductsSection from '~/components/sections/ProductsSection.vue';
 import BestSellerSection from '~/components/sections/BestSellerSection.vue';
 
 useSeoMeta({
-  title: 'Home'
-})
+  title: 'Home',
+});
 
 
 const query = gql`
@@ -19,13 +20,14 @@ const query = gql`
         updatedAt
     }
   }`
-  
+
 const { data } = await useAsyncQuery(query)
+console.log(data)
 
 </script>
 
 <template>
-  <h1>Home page</h1>
+<!--  <Banner />-->
   <ProductsSection :products="data?.products"/>
   <BestSellerSection :bestSellerProducts="data?.products"/>
 </template>
