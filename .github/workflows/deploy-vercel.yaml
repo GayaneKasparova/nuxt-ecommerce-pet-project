@@ -1,9 +1,6 @@
 name: Deploy on Vercel Workflow
 
 on:
-  push:
-    branches:
-      - '*'
   pull_request:
     branches:
       - '*'

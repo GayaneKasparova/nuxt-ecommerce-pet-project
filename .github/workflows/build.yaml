@@ -1,9 +1,6 @@
 name: Build Workflow
 
 on:
-  push:
-    branches:
-      - '*'
   pull_request:
     branches:
       - '*'
