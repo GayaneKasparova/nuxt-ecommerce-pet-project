@@ -1,17 +1,19 @@
 <template>
-  <section class="my-12" v-if="hasProducts">
+  <section class="my-12 p-5" v-if="hasProducts">
     <div class="flex items-center justify-between">
-      <h2 class="mr-4 text-4xl">Products</h2>
-      <p class="text-xl cursor-pointer" @click="seeAllProducts">See All</p>
+      <h2 class="mr-4 text-h1">Products</h2>
+      <p class="cursor-pointer text-xl" @click="seeAllProducts">See All</p>
     </div>
-    <ul class="grid mt-12 lg:grid-cols-4 gap-4">
+    <ul
+      class="mt-12 grid justify-items-center gap-4 md:grid-cols-2 lg:grid-cols-4"
+    >
       <li v-for="product in products" :key="product.id">
         <ProductCard
-            class="max-w-72"
-            :navigate-url="`/products/${product.id}`"
-            :image-url="product.images[0]"
-            :title="product.title"
-            :price="product.price"
+          class="max-w-92 lg:max-w-72"
+          :navigate-url="`/products/${product.id}`"
+          :image-url="product.images[0]"
+          :title="product.title"
+          :price="product.price"
         />
       </li>
     </ul>
@@ -24,13 +26,13 @@ import ProductCard from '@/components/ProductCard';
 
 export default {
   components: {
-    ProductCard
+    ProductCard,
   },
   props: {
     products: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
     const hasProducts = computed(() => {
@@ -43,12 +45,10 @@ export default {
 
     return {
       hasProducts,
-      seeAllProducts
+      seeAllProducts,
     };
-  }
+  },
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

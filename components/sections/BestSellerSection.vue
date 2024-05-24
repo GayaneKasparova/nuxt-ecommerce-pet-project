@@ -1,18 +1,20 @@
 <template>
-  <section class="my-12" v-if="hasBestSellerProducts">
+  <section class="my-12 p-5" v-if="hasBestSellerProducts">
     <div class="flex items-center justify-between">
-      <h2 class="mr-4 text-4xl">Best Seller</h2>
-      <p class="text-xl cursor-pointer" @click="seeBestSeller">See All</p>
+      <h2 class="mr-4 text-h1">Best Seller</h2>
+      <p class="cursor-pointer text-p1-bold" @click="seeBestSeller">See All</p>
     </div>
 
-    <ul class="grid mt-12 gap-4 lg:grid-cols-3">
+    <ul
+      class="mt-12 grid justify-items-center gap-4 md:grid-cols-2 lg:grid-cols-3"
+    >
       <li v-for="product in bestSellerProducts" :key="product.id">
         <ProductCard
-            class="max-w-96"
-            :navigate-url="`/products/${product.id}`"
-            :image-url="product.images[0]"
-            :title="product.title"
-            :price="product.price"
+          class="max-w-96"
+          :navigate-url="`/products/${product.id}`"
+          :image-url="product.images[0]"
+          :title="product.title"
+          :price="product.price"
         />
       </li>
     </ul>
@@ -25,13 +27,13 @@ import ProductCard from '@/components/ProductCard';
 
 export default {
   components: {
-    ProductCard
+    ProductCard,
   },
   props: {
     bestSellerProducts: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
     const hasBestSellerProducts = computed(() => {
@@ -44,12 +46,10 @@ export default {
 
     return {
       hasBestSellerProducts,
-      seeBestSeller
+      seeBestSeller,
     };
-  }
+  },
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
