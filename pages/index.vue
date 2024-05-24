@@ -22,8 +22,8 @@ const query = gql`
 `;
 
 const { data } = await useAsyncQuery(query);
-const mainProducts = data?.value?.products.slice(0, 9);
-const bestSellerData = data?.value?.products.slice(0, 6);
+const mainProducts = data?.value?.products.slice(0, 8);
+const bestSellerData = data?.value?.products.slice(0, 3);
 </script>
 
 <template>

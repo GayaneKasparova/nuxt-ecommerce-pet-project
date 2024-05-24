@@ -9,7 +9,7 @@
     >
       <li v-for="product in products" :key="product.id">
         <ProductCard
-          class="max-w-92 lg:max-w-72"
+          class="max-w-92 mt-5 lg:max-w-72"
           :navigate-url="`/products/${product.id}`"
           :image-url="product.images[0]"
           :title="product.title"
