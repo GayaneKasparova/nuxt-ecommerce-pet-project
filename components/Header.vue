@@ -59,21 +59,20 @@ const toggleMenu = () => {
             class="mx-0.5 my-1 inline-block h-12 w-12 align-bottom lg:relative lg:w-full"
           >
             <form>
-              <input
-                class="lg:h-15 absolute right-12 z-10 h-12 w-0 border-0 bg-white pl-4 pr-12 outline-none transition-all focus:right-14 focus:w-[calc(100%-80px)] focus:rounded-lg focus:border focus:border-grey-100 focus:pr-4 lg:right-0 lg:w-full lg:rounded-lg lg:border lg:border-grey-40 lg:bg-grey-20 lg:focus:right-0 lg:focus:w-full lg:focus:border-grey-100 lg:focus:bg-white"
-                id="searchright"
-                type="search"
-                name="q"
-                placeholder="Search"
-              />
               <label
                 class="relative z-20 inline-block h-12 w-full cursor-pointer select-none p-0 pl-8 pr-8 text-center text-sm text-white no-underline lg:absolute lg:right-0 lg:w-10"
-                for="searchright"
+                for="headerSearch"
               >
                 <SearchIcon
                   class="absolute left-2 top-1/2 h-6 w-6 -translate-y-1/2 translate-x-1/2 transform"
                 />
               </label>
+              <input
+                class="lg:h-15 absolute right-12 z-10 h-12 w-0 border-0 bg-white pl-4 pr-12 outline-none transition-all focus:right-14 focus:w-[calc(100%-80px)] focus:rounded-lg focus:border focus:border-grey-100 focus:pr-4 lg:right-0 lg:w-full lg:rounded-lg lg:border lg:border-grey-40 lg:bg-grey-20 lg:focus:right-0 lg:focus:w-full lg:focus:border-grey-100 lg:focus:bg-white"
+                id="headerSearch"
+                type="search"
+                placeholder="Search"
+              />
             </form>
           </div>
         </li>
