@@ -12,22 +12,32 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  minWidth: {
+    type: Boolean,
+    default: true,
+  },
   variant: {
-    type: String as PropType<'primary' | 'outline' | 'ghost'>,
+    type: String as PropType<'primary' | 'primaryLight' | 'outline' | 'ghost'>,
     default: 'primary',
-    validator: (v: string) => ['primary', 'outline', 'ghost'].includes(v),
+    validator: (v: string) =>
+      ['primary', 'primaryLight', 'outline', 'ghost'].includes(v),
   },
 });
 
 const tag = computed(() => (props.to ? NuxtLink : props.href ? 'a' : 'button'));
 
-const baseBtn =
-  'inline-flex min-w-44 lg:min-w-50 justify-center py-3.5 rounded-2 border border-solid border-grey-100 ';
+let baseBtn =
+  'inline-flex px-9 justify-center py-3.5 rounded-lg border-grey-100 text-nowrap';
+
+if (props.minWidth) {
+  baseBtn += ' min-w-44 lg:min-w-64';
+}
 
 const btn = {
-  primary: `${baseBtn} bg-grey-100 text-white`,
-  outline: `${baseBtn} border border-primary text-primary`,
-  ghost: 'text-primary',
+  primary: `${baseBtn} bg-grey-100 text-white text-p1-bold border border-solid`,
+  primaryLight: `${baseBtn} bg-turquoise-40 text-grey-100 text-p1-bold`,
+  outline: `${baseBtn} border border-primary text-primary text-p1-bold border border-solid`,
+  ghost: 'text-p1-bold text-nowrap',
 };
 </script>
 
