@@ -46,10 +46,14 @@ const toggleMenu = () => {
               v-if="menu || isDesktop"
             >
               <li>
-                <NuxtLink to="/products">Products</NuxtLink>
+                <NuxtLink to="/products" @click.native="toggleMenu()"
+                  >Products</NuxtLink
+                >
               </li>
               <li>
-                <NuxtLink to="/about">About</NuxtLink>
+                <NuxtLink to="/about" @click.native="toggleMenu()"
+                  >About</NuxtLink
+                >
               </li>
             </ul>
           </Teleport>
@@ -60,7 +64,7 @@ const toggleMenu = () => {
           >
             <form>
               <label
-                class="relative z-20 inline-block h-12 w-full cursor-pointer select-none p-0 pl-8 pr-8 text-center text-sm text-white no-underline lg:absolute lg:right-0 lg:w-10"
+                class="w-15 absolute z-20 inline-block h-12 cursor-pointer select-none p-0 pl-8 pr-8 text-center text-sm text-white no-underline lg:absolute lg:right-0 lg:w-10"
                 for="headerSearch"
               >
                 <SearchIcon
@@ -87,11 +91,16 @@ const toggleMenu = () => {
                 variant="ghost"
                 :minWidth="!isDesktop"
                 class="px-9"
+                :class="{ [`w-full`]: !isDesktop }"
                 >Sign up</BaseButton
               >
             </li>
             <li>
-              <BaseButton to="" variant="primaryLight" :minWidth="!isDesktop"
+              <BaseButton
+                to=""
+                variant="primaryLight"
+                :minWidth="!isDesktop"
+                :class="{ [`w-full`]: !isDesktop }"
                 >Login</BaseButton
               >
             </li>
