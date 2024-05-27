@@ -3,7 +3,7 @@
 <template>
   <div class="flex h-screen flex-col justify-between">
     <Header />
-    <main class="m-auto min-h-full border">
+    <main class="m-auto min-h-full">
       <slot />
     </main>
     <Footer />

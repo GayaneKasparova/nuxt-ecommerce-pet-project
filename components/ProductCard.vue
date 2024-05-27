@@ -25,18 +25,18 @@
       <div class="p-1">
         <span class="text-p1-bold font-black">${{ price }} Price</span>
         <span class="p-2 text-xl font-thin text-gray-400 line-through">{{
-          salePrice
+          price + (price * priceOff) / 100
         }}</span>
         <span
           class="w-69 h-30 mx-1 rounded bg-red-600 p-1 text-sm font-thin text-white"
-          >{{ priceOff }}</span
+          >{{ priceOff }}% off</span
         >
       </div>
     </div>
     <div>
       <FavoriteSvg
         @click="handleFavoriteClick"
-        class="absolute right-6 top-6"
+        class="absolute right-6 top-6 cursor-pointer"
       />
     </div>
   </div>
@@ -80,8 +80,8 @@ export default {
       default: 25,
     },
     priceOff: {
-      type: String,
-      default: '15% Off',
+      type: Number,
+      default: 15,
     },
     ratings: {
       type: Number,
