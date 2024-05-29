@@ -1,7 +1,7 @@
 <template>
   <section class="my-12 p-5" v-if="hasProducts">
     <div class="flex items-center justify-between">
-      <h2 class="mr-4 text-h1">Products</h2>
+      <h2 class="mr-4 text-h2">Products</h2>
       <p class="cursor-pointer text-p1-bold" @click="seeAllProducts">See All</p>
     </div>
     <ul
