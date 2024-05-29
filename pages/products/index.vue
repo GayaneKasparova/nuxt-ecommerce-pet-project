@@ -13,7 +13,7 @@ useSeoMeta({
 
 const query = gql`
   query getProducts {
-    products(categoryId: 3) {
+    products {
       id
       title
       price

@@ -150,8 +150,19 @@ export default <Partial<Config>>{
           { lineHeight: '1.71', fontWeight: 800 },
         ], // Scales from 12px to 14px
       },
+      boxShadow: {
+        header: '0px 4px 24px 0px rgba(0,0,0,0.13)',
+      },
       spacing: {
+        18: '4.5rem',
+        30: '7.5rem',
         50: '12.5rem',
+      },
+      screens: {
+        '2xl': '1440px',
+        // => @media (min-width: 1440px) { ... }
+        '3xl': '1536px',
+        // => @media (min-width: 1536px) { ... }
       },
     },
   },
