@@ -28,7 +28,7 @@
           price + (price * priceOff) / 100
         }}</span>
         <span
-          class="w-69 h-30 mx-1 rounded bg-red-600 p-1 text-sm font-thin text-white"
+          class="w-69 mx-1 h-30 rounded bg-red-600 p-1 text-sm font-thin text-white"
           >{{ priceOff }}% off</span
         >
       </div>
