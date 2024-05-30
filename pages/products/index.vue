@@ -38,7 +38,7 @@ const { data } = await useAsyncQuery(query);
     <ul v-if="data?.products?.length">
       <li v-for="product in data?.products">
         <NuxtLink :to="`/products/${product?.id}`">
-          <NuxtImg :src="product?.images[0]" />
+          <NuxtImg :src="product?.images[0]" :alt="product.title" lazy />
           <h2>{{ product.title }}</h2>
           <p>${{ product.price }}</p>
         </NuxtLink>

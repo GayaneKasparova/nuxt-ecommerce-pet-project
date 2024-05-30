@@ -3,7 +3,7 @@ const viewport = useViewport();
 </script>
 
 <template>
-  <div class="flex flex-col lg:relative lg:flex-row lg:justify-end">
+  <div class="mb-20 flex flex-col lg:relative lg:flex-row lg:justify-end">
     <div class="left-0 z-20 lg:absolute lg:h-[calc(100%-4rem)] lg:w-1/2">
       <NuxtImg
         src="/images/banner-image.jpg"
