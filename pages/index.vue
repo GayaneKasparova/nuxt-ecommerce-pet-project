@@ -1,29 +1,31 @@
 <script setup>
+import { computed, toRaw } from 'vue';
 import Banner from '~/components/Banner.vue';
-import ProductsSection from '~/components/sections/ProductsSection.vue';
+import productService from '~/services/api/productService.ts';
 import BestSellerSection from '~/components/sections/BestSellerSection.vue';
+import ProductsSection from '~/components/sections/ProductsSection.vue';
 
+// SEO Metadata
 useSeoMeta({
   title: 'Home',
 });
 
-const query = gql`
-  query getProducts {
-    products(categoryId: 3) {
-      id
-      title
-      price
-      description
-      images
-      creationAt
-      updatedAt
-    }
-  }
-`;
+const { data, error } = await useAsyncData('products', async () => {
+  return await productService.getProducts();
+});
 
-const { data } = await useAsyncQuery(query);
-const mainProducts = data?.value?.products.slice(0, 8);
-const bestSellerData = data?.value?.products.slice(0, 3);
+// Error handling
+if (error.value) {
+  console.error('Error fetching products:', error.value);
+}
+
+const mainProducts = computed(() => {
+  return data.value ? data.value.slice(0, 8) : [];
+});
+
+const bestSellerData = computed(() => {
+  return data.value ? data.value.slice(0, 3) : [];
+});
 </script>
 
 <template>
