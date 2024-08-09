@@ -8,13 +8,24 @@
     <ul
       class="mt-12 grid justify-items-center gap-4 md:grid-cols-2 lg:grid-cols-3"
     >
-      <li v-for="product in bestSellerProducts" :key="product.id">
+      <li v-for="product in bestSellerProducts" :key="product._id">
         <ProductCard
           class="max-w-96"
-          :navigate-url="`/products/${product.id}`"
-          :image-url="product.images[0]"
-          :title="product.title"
+          :key="product._id"
+          :name="product.name"
+          :description="product.description"
           :price="product.price"
+          :category="product.category"
+          :image="product.images[0]"
+          :color="product.color[0]"
+          :manufacturer="product.manufacturer"
+          :salePrice="product.salePrice"
+          :sale="product.sale"
+          :soldCount="product.soldCount"
+          :stock="product.stock"
+          :ratings="product.ratings"
+          :navigate-url="`/products/${product._id}`"
+          :price-off="product.salePrice"
         />
       </li>
     </ul>

@@ -14,12 +14,11 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'nuxt-viewport',
   ],
-  css: ['./assets/styles/styles.scss'],
-  apollo: {
-    clients: {
-      default: {
-        httpEndpoint: 'https://api.escuelajs.co/graphql',
-      },
-    },
+  typescript: {
+    strict: true,
   },
+  plugins: [
+    '~/plugins/axios', // Register the Axios plugin
+  ],
+  css: ['./assets/styles/styles.scss'],
 });
