@@ -52,6 +52,10 @@ const password = ref('');
 const showPassword = ref(false); // Control password visibility
 const router = useRouter();
 
+definePageMeta({
+  layout: false,
+});
+
 const handleLogin = () => {
   if (username.value && password.value) {
     alert(`Welcome, ${username.value}!`);
@@ -72,7 +76,6 @@ import PasswordSvg from '~/components/SVG/Password.vue';
 import VisibilityOff from '~/components/SVG/VisibilityOff.vue';
 
 export default {
-  layout: false,
   name: 'DashboardLogin',
   components: {
     UserSvg,
