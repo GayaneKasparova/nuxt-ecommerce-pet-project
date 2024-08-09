@@ -2,19 +2,19 @@
   <div class="relative">
     <NuxtLink :to="navigateUrl">
       <NuxtImg
-        class="max-h-72 w-96 rounded-xl"
-        :src="imageUrl"
-        :alt="title"
+        class="h-72 w-96 rounded-xl"
+        :src="image"
+        :alt="name"
         @error="handleImageError"
         lazy
       />
       <div class="max-w-92 mt-4">
-        <span class="text-p1-bold">{{ title }}</span>
+        <span class="text-p1-bold">{{ name }}</span>
       </div>
     </NuxtLink>
     <div class="mt-2">
       <div class="flex items-center p-1">
-        <span v-for="rating in ratings" :key="rating">
+        <span v-for="rating in Math.ceil(ratings)" :key="rating">
           <RatingSvg />
         </span>
         <span class="ml-2 text-p3-reg text-gray-400">{{ ratings }}.0</span>
@@ -24,12 +24,15 @@
       </div>
       <div class="p-1">
         <span class="text-p1-bold font-black">${{ price }} Price</span>
-        <span class="p-2 text-xl font-thin text-gray-400 line-through">{{
-          price + (price * priceOff) / 100
-        }}</span>
         <span
+          v-if="sale"
+          class="p-2 text-xl font-thin text-gray-400 line-through"
+          >{{ salePrice }}</span
+        >
+        <span
+          v-if="sale"
           class="w-69 mx-1 h-30 rounded bg-red-600 p-1 text-sm font-thin text-white"
-          >{{ priceOff }}% off</span
+          >{{ (((price - salePrice) / price) * 100).toFixed(2) }}% off</span
         >
       </div>
     </div>
@@ -54,38 +57,61 @@ export default {
     FavoriteSvg,
   },
   props: {
-    navigateUrl: {
+    name: {
       type: String,
       required: true,
     },
-    imageUrl: {
+    description: {
       type: String,
       required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-      default: defaultImage,
     },
     price: {
       type: Number,
       required: true,
     },
-    salePrice: {
+    category: {
       type: String,
-      default: '$200',
+      required: false,
     },
-    soldCount: {
+    image: {
+      type: String,
+      required: true,
+    },
+    color: {
+      type: String,
+      required: true,
+    },
+    manufacturer: {
+      type: String,
+      required: true,
+    },
+    sale: {
+      type: Boolean,
+      default: false,
+    },
+    salePrice: {
       type: Number,
-      default: 25,
+      required: false,
     },
     priceOff: {
       type: Number,
       default: 15,
     },
+    soldCount: {
+      type: Number,
+      default: 25,
+    },
+    stock: {
+      type: Number,
+      required: true,
+    },
     ratings: {
       type: Number,
       default: 5,
+    },
+    navigateUrl: {
+      type: String,
+      required: true,
     },
   },
   setup(props, { emit }) {
