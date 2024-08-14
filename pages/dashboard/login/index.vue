@@ -9,9 +9,9 @@
           <UserSvg class="absolute left-1.5 top-4" />
           <input
             type="text"
-            id="username"
-            v-model="username"
-            placeholder="Username"
+            id="email"
+            v-model="email"
+            placeholder="Email"
             class="w-full rounded-md border border-gray-300 px-3 py-2 pl-8 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
             required
           />
@@ -43,44 +43,35 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import UserSvg from '~/components/SVG/User.vue';
+import PasswordSvg from '~/components/SVG/Password.vue';
+import VisibilityOff from '~/components/SVG/VisibilityOff.vue';
+import { useAuth } from '~/composable/useAuth';
 
-const username = ref('');
-const password = ref('');
-const showPassword = ref(false); // Control password visibility
+const email = ref<string>('');
+const password = ref<string>('');
+const showPassword = ref<boolean>(false);
 const router = useRouter();
+const { login } = useAuth();
 
 definePageMeta({
   layout: false,
 });
 
-const handleLogin = () => {
-  if (username.value && password.value) {
-    alert(`Welcome, ${username.value}!`);
-    router.push('/seller/dashboard');
-  } else {
-    alert('Please enter your username and password.');
+const handleLogin = async () => {
+  try {
+    const token = await login(email.value, password.value);
+    alert(`Welcome, ${email.value}!`);
+    await router.push('/dashboard/seller');
+  } catch (error: any) {
+    alert(error.message || 'Login failed');
   }
 };
 
 const togglePasswordVisibility = () => {
   showPassword.value = !showPassword.value;
-};
-</script>
-
-<script>
-import UserSvg from '~/components/SVG/User.vue';
-import PasswordSvg from '~/components/SVG/Password.vue';
-import VisibilityOff from '~/components/SVG/VisibilityOff.vue';
-
-export default {
-  name: 'DashboardLogin',
-  components: {
-    UserSvg,
-    PasswordSvg,
-    VisibilityOff,
-  },
 };
 </script>

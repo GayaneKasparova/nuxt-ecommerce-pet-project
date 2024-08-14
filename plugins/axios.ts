@@ -1,18 +1,28 @@
-import { defineNuxtPlugin } from '#app';
+import { defineNuxtPlugin } from 'nuxt/app';
 import axios from 'axios';
 
-export default defineNuxtPlugin(() => {
-  const instance = axios.create({
-    baseURL:
-      'https://ecommerce-pet-project-backend-f491f8d409a2.herokuapp.com/',
+export default defineNuxtPlugin(nuxtApp => {
+  const axiosInstance = axios.create({
+    baseURL: process.env.API_BASE_URL || 'http://localhost:8000',
+    headers: {
+      'Content-Type': 'application/json',
+    },
   });
 
-  instance.interceptors.request.use(config => {
-    console.log('Making request to ' + config.url);
+  // Add a request interceptor to log the request and attach the token
+  axiosInstance.interceptors.request.use(config => {
+    // Only attach the token if running on the client
+    if (process.client) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    }
     return config;
   });
 
-  instance.interceptors.response.use(
+  // Add a response interceptor to handle errors
+  axiosInstance.interceptors.response.use(
     response => response,
     error => {
       console.error('Error:', error);
@@ -20,9 +30,7 @@ export default defineNuxtPlugin(() => {
     }
   );
 
-  return {
-    provide: {
-      axios: instance,
-    },
-  };
+  // Attach the axios instance to the Nuxt app
+  nuxtApp.provide('axios', axiosInstance);
+  nuxtApp.provide('api', axiosInstance); // Optional alias for convenience
 });
