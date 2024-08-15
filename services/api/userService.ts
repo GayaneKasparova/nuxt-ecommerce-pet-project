@@ -1,5 +1,5 @@
 import { useNuxtApp } from '#app';
-import type { User } from '~/types/User';
+import type User from '~/types/User';
 
 export default {
   async getUsers(): Promise<User[]> {

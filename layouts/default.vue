@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import { SpeedInsights } from '@vercel/speed-insights/nuxt';
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="flex flex-col justify-between font-openSans">
