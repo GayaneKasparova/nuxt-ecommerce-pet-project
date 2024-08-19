@@ -50,6 +50,9 @@ import UserSvg from '~/components/SVG/User.vue';
 import PasswordSvg from '~/components/SVG/Password.vue';
 import VisibilityOff from '~/components/SVG/VisibilityOff.vue';
 import { useAuth } from '~/composable/useAuth';
+import { getToken } from '~/services/tokenService/tokenService';
+import type { CustomJwtPayload } from '~/utils/jwt';
+import authGuard from '~/middleware/guards/authGuard';
 
 const email = ref<string>('');
 const password = ref<string>('');
@@ -59,13 +62,21 @@ const { login } = useAuth();
 
 definePageMeta({
   layout: false,
+  middleware: authGuard,
 });
 
 const handleLogin = async () => {
   try {
-    const token = await login(email.value, password.value);
-    alert(`Welcome, ${email.value}!`);
-    await router.push('/dashboard/seller');
+    await login(email.value, password.value);
+    const token: string | null = getToken();
+    if (token) {
+      const payloadData: CustomJwtPayload | null = decodeToken(token);
+      if (payloadData?.userId) {
+        await router.push(
+          `/dashboard/seller/${payloadData.userId}/add-product`
+        );
+      }
+    }
   } catch (error: any) {
     alert(error.message || 'Login failed');
   }
