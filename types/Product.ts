@@ -5,7 +5,7 @@ export default interface Product {
   createdAt: string;
   description: string;
   imageUrls?: string[];
-  images: string[];
+  imageKeys: string[];
   manufacturer: string;
   name: string;
   price: number;

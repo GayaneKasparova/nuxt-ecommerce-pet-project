@@ -16,7 +16,7 @@
           :description="product.description"
           :price="product.price"
           :category="product.category"
-          :image="product.images[0]"
+          :image="product.imageUrls[0]"
           :color="product.color[0]"
           :manufacturer="product.manufacturer"
           :salePrice="product.salePrice"
