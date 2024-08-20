@@ -2,117 +2,149 @@
   <div class="flex min-h-screen bg-gray-100">
     <!-- Main Content -->
     <main class="flex-1 p-8">
-      <div class="min-h-screen bg-gray-100 p-8">
-        <div class="min-h-screen bg-gray-100 p-6">
-          <div class="mb-6 flex items-center justify-between">
-            <h1 class="text-2xl font-bold">Product List</h1>
-            <button
-              class="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
-            >
-              Add Item
-            </button>
-          </div>
+      <div class="min-h-screen bg-gray-100 p-6">
+        <!-- Header Section -->
+        <div class="mb-6 flex items-center justify-between">
+          <h1 class="text-2xl font-bold">Product List</h1>
+        </div>
 
-          <div class="mb-6 rounded-md bg-white p-4 shadow-md">
-            <div class="mb-4 flex items-center justify-between">
-              <input
-                type="text"
-                placeholder="Search here"
-                class="w-1/3 rounded-md border px-4 py-2"
-              />
-              <div class="flex space-x-4">
-                <select class="rounded-md border px-4 py-2">
-                  <option>Category</option>
-                  <!-- Add categories here -->
-                </select>
-                <select class="rounded-md border px-4 py-2">
-                  <option>Sort By</option>
-                  <!-- Add sort options here -->
-                </select>
-              </div>
-            </div>
-
-            <div
-              v-for="product in products"
-              :key="product.id"
-              class="flex items-center justify-between border-b py-4"
-            >
-              <div class="flex items-center">
-                <img
-                  :src="product.image"
-                  alt="Product image"
-                  class="mr-4 h-12 w-12 rounded-md"
-                />
-                <div>
-                  <h2 class="font-bold">{{ product.name }}</h2>
-                  <p class="text-sm text-gray-500">
-                    <span
-                      v-if="product.originalPrice"
-                      class="mr-2 line-through"
-                    >
-                      {{ product.originalPrice }}
-                    </span>
-                    {{ product.price }}
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex space-x-2">
-                <button class="text-blue-500 hover:text-blue-700">
-                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                      d="M5 21h14a1 1 0 001-1v-2H4v2a1 1 0 001 1zM4 6h16V4H4v2zM19 8H5v10h14V8zM7 10h2v6H7v-6zm4 0h2v6h-2v-6z"
-                    ></path>
-                  </svg>
-                </button>
-                <button class="text-red-500 hover:text-red-700">
-                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                      d="M9 3v1H4v2h16V4h-5V3H9zm1 4v12h4V7h-4zm-5 0v12h2V7H5zm10 0v12h2V7h-2z"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
+        <!-- Search and Filter Section -->
+        <div class="mb-6 rounded-md bg-white p-4 shadow-md">
+          <div class="mb-4 flex items-center justify-between">
+            <input
+              type="text"
+              placeholder="Search here"
+              class="w-1/3 rounded-md border px-4 py-2"
+            />
+            <div class="flex space-x-4">
+              <select class="px-4 py-2">
+                <option>Category</option>
+                <!-- Add categories here -->
+              </select>
+              <select class="px-4 py-2">
+                <option>Sort By</option>
+                <!-- Add sort options here -->
+              </select>
+              <button
+                @click="addProduct"
+                class="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+              >
+                Add Item
+              </button>
             </div>
           </div>
         </div>
+
+        <!-- Product Table -->
+        <div class="overflow-x-auto">
+          <table class="min-w-full table-auto bg-white shadow-md">
+            <thead>
+              <tr class="bg-gray-100 text-left">
+                <th class="px-6 py-3 text-sm font-bold text-gray-600">
+                  Product
+                </th>
+                <th class="px-6 py-3 text-sm font-bold text-gray-600">Price</th>
+                <th class="px-6 py-3 text-sm font-bold text-gray-600">Stock</th>
+                <th class="px-6 py-3 text-sm font-bold text-gray-600">Sold</th>
+                <th class="px-6 py-3 text-sm font-bold text-gray-600">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="product in currentSellerProducts"
+                :key="product._id"
+                class="border-b hover:bg-gray-50"
+              >
+                <!-- Product Info -->
+                <td class="flex items-center px-6 py-4">
+                  <img
+                    :src="product.imageUrls[0]"
+                    alt="Product image"
+                    class="mr-4 h-12 w-12 rounded-md"
+                  />
+                  <h2 class="font-bold">{{ product.name }}</h2>
+                </td>
+
+                <!-- Price Info -->
+                <td class="px-6 py-4 text-sm text-gray-500">
+                  <span v-if="product.sale" class="mr-2 line-through">
+                    {{ product.salePrice }}
+                  </span>
+                  {{ product.price }}
+                </td>
+
+                <!-- Stock Info -->
+                <td class="px-6 py-4 text-sm text-gray-500">
+                  {{ product.stock || 'In Stock' }}
+                </td>
+
+                <!-- Sold Info -->
+                <td class="px-6 py-4 text-sm text-gray-500">
+                  {{ product.soldCount || '0' }}
+                </td>
+
+                <!-- Actions -->
+                <td class="px-6 py-4">
+                  <div class="flex space-x-2">
+                    <span class="cursor-pointer" @click="editProduct"
+                      ><Edit
+                    /></span>
+                    <span class="cursor-pointer" @click="deleteProduct"
+                      ><Delete />
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <!--      <router-view></router-view>-->
     </main>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import authGuard from '~/middleware/guards/authGuard.ts';
+import Delete from '~/components/SVG/Delete.vue';
+import Edit from '~/components/SVG/Edit.vue';
+import productService from '~/services/api/productService.ts';
 
 definePageMeta({
   layout: 'dashboard',
   middleware: authGuard,
 });
 
-const products = ref([
-  {
-    id: 1,
-    name: 'Fullset Black Chair & Sofa',
-    price: '$99',
-    originalPrice: '$120',
-    image: 'https://via.placeholder.com/50',
-  },
-  {
-    id: 2,
-    name: 'White Chair',
-    price: '$99',
-    image: 'https://via.placeholder.com/50',
-  },
-  {
-    id: 3,
-    name: 'Green Sleeper Sofa',
-    price: '$99',
-    image: 'https://via.placeholder.com/50',
-  },
-  // Add more products as needed
-]);
+const router = useRouter();
+const route = useRoute();
+
+const { data, error } = await useAsyncData('products', async () => {
+  return await productService.getProductsBySellerId(route.params.sellerid);
+});
+
+// Error handling
+if (error.value) {
+  console.error('Error fetching products:', error.value);
+}
+
+const currentSellerProducts = computed(() => {
+  return data.value ? data.value : [];
+});
+
+const editProduct = () => {
+  alert('edit');
+};
+
+const deleteProduct = () => {
+  alert('delete Product');
+};
+
+const addProduct = () => {
+  const basePath = route.path.split('/').slice(0, -1).join('/');
+  router.push(`${basePath}/add-product`);
+};
 </script>
 
 <style>

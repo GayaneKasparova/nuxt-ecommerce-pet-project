@@ -7,9 +7,16 @@ export default {
     const response = await $axios.get<Product[]>('/products');
     return response.data;
   },
+
   async getProductById(id: string): Promise<Product> {
     const { $axios } = useNuxtApp();
     const response = await $axios.get<Product>(`/products/${id}`);
+    return response.data;
+  },
+
+  async getProductsBySellerId(id: string): Promise<Product> {
+    const { $axios } = useNuxtApp();
+    const response = await $axios.get<Product>(`/products/seller/${id}`);
     return response.data;
   },
 };
