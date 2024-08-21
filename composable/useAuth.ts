@@ -6,6 +6,7 @@ import {
   clearToken,
   getToken,
 } from '~/services/tokenService/tokenService';
+import { decodeToken, isTokenExpired } from '~/utils/jwt'; // Assuming these utilities exist
 
 export const useAuth = () => {
   const router = useRouter();
@@ -13,15 +14,28 @@ export const useAuth = () => {
 
   // Initialize isAuthenticated based on client-side localStorage
   if (typeof window !== 'undefined') {
-    isAuthenticated.value = !!getToken();
+    const token = getToken();
+    if (token) {
+      const decodedToken = decodeToken(token);
+      if (decodedToken && !isTokenExpired(decodedToken)) {
+        isAuthenticated.value = true;
+      } else {
+        clearToken(); // Clear token if it's expired
+      }
+    }
   }
 
   const login = async (email: string, password: string): Promise<void> => {
     try {
       const token = await apiLogin({ email, password });
-      setToken(token);
-      isAuthenticated.value = true;
-      await router.push('/dashboard/seller');
+      const decodedToken = decodeToken(token);
+
+      if (decodedToken && !isTokenExpired(decodedToken)) {
+        setToken(token);
+        isAuthenticated.value = true;
+      } else {
+        throw new Error('Received an invalid or expired token.');
+      }
     } catch (error) {
       console.error('Login failed:', error);
       throw error;
