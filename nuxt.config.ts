@@ -17,6 +17,9 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
+  tailwindcss: {
+    configPath: 'tailwind.config.ts',
+  },
   plugins: [
     '~/plugins/axios', // Register the Axios plugin
   ],
