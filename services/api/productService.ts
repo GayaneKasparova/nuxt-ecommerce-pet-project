@@ -14,9 +14,27 @@ export default {
     return response.data;
   },
 
-  async getProductsBySellerId(id: string): Promise<Product> {
+  async getProductsBySellerId(id: string): Promise<Product[]> {
     const { $axios } = useNuxtApp();
-    const response = await $axios.get<Product>(`/products/seller/${id}`);
+    const response = await $axios.get<Product[]>(`/products/seller/${id}`);
     return response.data;
   },
+
+  async addProduct(data: any): Promise<Product> {
+    const { $axios } = useNuxtApp();
+    const response = await $axios.post<Product>(`/products`, data,
+      {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+
+  async deleteProduct(productId: String): Promise<Product> {
+    const { $axios } = useNuxtApp();
+    const response = await $axios.delete<Product>(`/products/${productId}`);
+    return response.data;
+  },
+  
 };

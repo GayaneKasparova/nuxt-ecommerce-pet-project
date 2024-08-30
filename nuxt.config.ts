@@ -14,14 +14,19 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'nuxt-viewport',
   ],
+
   typescript: {
     strict: true,
   },
+
   tailwindcss: {
     configPath: 'tailwind.config.ts',
   },
+
   plugins: [
     '~/plugins/axios', // Register the Axios plugin
   ],
+
   css: ['./assets/styles/styles.scss'],
+  compatibilityDate: '2024-08-22',
 });
